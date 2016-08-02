@@ -1,3 +1,6 @@
+@app.route('/')
+def main():
+    return render_template('main_page.html')
 from flask import Flask, render_template
 app = Flask(__name__)
 
@@ -17,6 +20,9 @@ session = DBSession()
 
 #YOUR WEB APP CODE GOES HERE
 
+@app.route('/')
+def main():
+    return render_template('main_page.html')
 
 
 
