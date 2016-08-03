@@ -1,3 +1,6 @@
+
 body{
 	background-image: url("/home/student/Desktop/Y2-2016-B4/static/images/colortheory.jpg");
-}
+	background-size: 100% 5000%;
+    background-repeat: no-repeat;
+ }
