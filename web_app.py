@@ -1,6 +1,4 @@
-@app.route('/')
-def main():
-    return render_template('main_page.html')
+
 from flask import Flask, render_template
 app = Flask(__name__)
 
@@ -24,9 +22,9 @@ session = DBSession()
 def main():
     return render_template('main_page.html')
 
-
-
-
+@app.route('/facts')
+def facts():
+    return render_template('facts.html')
 
 
 
