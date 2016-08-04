@@ -6,6 +6,9 @@
 </head>
 <body>
 
+{% for tribe in tribes%}
+<a href="{{url_for('facts', tribe_name=tribe) }}">{{ tribe }}</a><br>
+{%endfor%}
 
 </body>
 </html>

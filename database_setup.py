@@ -8,10 +8,8 @@ class Person(Base):
 	__tablename__ = 'person' 
 	id = Column(Integer, primary_key=True)
 	name = Column(String)  
-	gender = Column(String) 
+	gender = Column(String)
 	nationality = Column(String)
-	score = Column(Integer)
-	Base = declarative_base()
 
 class Fact(Base): 
 	__tablename__ = 'facts' 

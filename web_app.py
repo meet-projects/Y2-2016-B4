@@ -7,7 +7,7 @@ app = Flask(__name__)
 ### Add your tables here!
 # For example:
 # from database_setup import Base, Potato, Monkey
-from database_setup import Base, Fact, Answers
+from database_setup import *
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -17,8 +17,8 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-#YOUR WEB APP CODE GOES HERE
 
+#YOUR WEB APP CODE GOES HERE
 @app.route('/', methods=['GET', 'POST'])
 def login():
 	if request.method == 'GET':
@@ -40,13 +40,32 @@ def signup():
 
 	person = session.query(Person).filter_by(name=name).first()
 	if person is None:
-		new_person=person(name=name, gender=gender, nationality=nationality)
+		new_person=Person(name=name, gender=gender, nationality=nationality)
 		session.add(new_person)
 		session.commit()
 		flask_session['name'] = name
 		return redirect(url_for('choose'))
 	else:
 		return redirect(url_for('signup'))
+
+
+
+@app.route('/choose')
+def choose():
+	if 'name' in flask_session:
+		person = session.query(Person).filter_by(name=flask_session['name']).first()
+		facts=session.query(Fact).all()
+		tribes = set()
+		for fact  in facts :
+			tribes.add(fact.tribe)
+		return render_template("choose.html", tribes= tribes)
+
+	else:
+		return redirect(url_for('login'))
+
+
+
+
 
 @app.route('/facts/<string:tribe_name>/', methods=['GET', 'POST'])
 def facts(tribe_name):

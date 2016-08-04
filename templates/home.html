@@ -9,7 +9,7 @@
 <body>
 
 <section class="loginform cf">
-<form name="login" action="{{ url_for('login') }}" method="get" accept-charset="utf-8">
+<form name="login" action="{{ url_for('login') }}" method="post" accept-charset="utf-8">
   <ul>
     <li><label for="name">Name</label>
     <input type="name" name="name" placeholder="Full Name" required></li>
@@ -21,7 +21,7 @@
 <br>
 <br>
 <section class="signUpform cf">
-<form name="signup" action="{{ url_for('signup') }}" method="get" accept-charset="utf-8">
+<form name="signup" action="{{ url_for('signup') }}" method="post" accept-charset="utf-8">\
   <ul>
   	<li><label for="name" >Name</label>
   	<input type="name" name="name" placeholder="Full Name" required></li>
