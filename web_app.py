@@ -1,12 +1,13 @@
 
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, request
+from flask import session as flask_session
 app = Flask(__name__)
 
 # SQLAlchemy stuff
 ### Add your tables here!
 # For example:
 # from database_setup import Base, Potato, Monkey
-from database_setup import Base
+from database_setup import Base, Fact, Answers
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -18,15 +19,58 @@ session = DBSession()
 
 #YOUR WEB APP CODE GOES HERE
 
-@app.route('/')
-def main():
-    return render_template('main_page.html')
+@app.route('/', methods=['GET', 'POST'])
+def login():
+	if request.method == 'GET':
+		return render_template('home.html')
+	else:
+		name = request.form['name']
+		person = session.query(Person).filter_by(name=name).first()
+		if person is None:
+			return redirect(url_for('login'))
+		else:
+			flask_session['name'] = name
+			return redirect(url_for('choose'))
 
-@app.route('/facts')
-def facts():
-    return render_template('facts.html')
+@app.route('/signup', methods=['POST'])
+def signup():
+	name=request.form['name']
+	gender=request.form['gender']
+	nationality=request.form['nationality']
+
+	person = session.query(Person).filter_by(name=name).first()
+	if person is None:
+		new_person=person(name=name, gender=gender, nationality=nationality)
+		session.add(new_person)
+		session.commit()
+		flask_session['name'] = name
+		return redirect(url_for('choose'))
+	else:
+		return redirect(url_for('signup'))
+
+@app.route('/facts/<string:tribe_name>/', methods=['GET', 'POST'])
+def facts(tribe_name):
+	if 'name' in flask_session:
+		person = session.query(Person).filter_by(name=flask_session['name']).first()
+		
+		facts = session.query(Fact).filter_by(tribe=tribe_name).all()
+		if request.method == 'GET':
+			return render_template('facts.html', facts=facts, tribe_name=tribe_name)
+		else:
+			for fact in facts:
+				answer = request.form['tf' + str(fact.id)]
+				new_answer_row = Answers(person_id=person.id,
+										 fact_id=fact.id,
+										 answer=answer)
+				session.add(new_answer_row)
+			session.commit()
+
+			return redirect(url_for('leaderboard'))
+	else:
+		return redirect(url_for('login'))
 
 
 
+app.secret_key = '234xz0v9z09d8f0912395rt0'
 if __name__ == '__main__':
     app.run(debug=True)

@@ -5,44 +5,67 @@
 <link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
 <!-- jQuery library --> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-<!-- Latest compiled JavaScript --> 
+<!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', 
-filename='styles.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
+
 </head>
 
 <body>
+<!--
+
 <img src="/home/student/Desktop/Y2-2016-B4/static/images/extra_large-1464367294-2170-how-many-trees-are-there-left-on-earth-more-than-3-trillion-finds-major-new-study.jpg" width="100%" height="100%">
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+  <! Indicators >
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
     <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
   </ol>
 
-  <!-- Wrapper for slides -->
+  <! Wrapper for slides >
   <div class="carousel-inner" role="listbox">
     <div class="item active">
+      <h3> fact1 is here </h3>
+      <input type="radio" name="TF" value="True">True
+      <input type="radio" name="TF" value="False">False
       <img src="img_chania.jpg" alt="Chania">
     </div>
 
     <div class="item">
+      <h3> fact2 is here </h3>
+      <input type="radio" name="TF1" value="True">True
+      <input type="radio" name="TF1" value="False">False
       <img src="img_chania2.jpg" alt="Chania">
     </div>
 
     <div class="item">
+      <h3> fact3 is here </h3>
+      <input type="radio" name="TF2" value="True">True
+      <input type="radio" name="TF2" value="False">False
+      <img src="img_chania2.jpg" alt="Chania">
+    </div>
+
+    <div class="item">
+      <h3> fact4 is here </h3>
+      <input type="radio" name="TF3" value="True">True
+      <input type="radio" name="TF3" value="False">False
       <img src="img_flower.jpg" alt="Flower">
     </div>
 
     <div class="item">
+      <h3> fact5 is here </h3>
+      <input type="radio" name="TF4" value="True">True
+      <input type="radio" name="TF4" value="False">False
       <img src="img_flower2.jpg" alt="Flower">
     </div>
   </div>
-
-  <!-- Left and right controls -->
+-->
+  <!-- Left and right controls > 
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -51,7 +74,43 @@ filename='styles.css') }}">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+</div>  
+-->
+
+<form action="{{ url_for('facts', tribe_name=tribe_name) }}" method="post">
+<!--
+<h2> fact1 is here </h2>
+<input type="radio" name="TF" value="True"> True
+<input type="radio" name="TF" value="False"> False
+
+<h2> fact2 is here </h2>
+<input type="radio" name="TF1" value="True"> True
+<input type="radio" name="TF1" value="False"> False
+
+<h2> fact3 is here </h2>
+<input type="radio" name="TF2" value="True"> True
+<input type="radio" name="TF2" value="False"> False
+
+<h2> fact4 is here </h2>
+<input type="radio" name="TF3" value="True"> True
+<input type="radio" name="TF3" value="False"> False
+
+<h2> fact5 is here </h2>
+<input type="radio" name="TF4" value="True"> True
+<input type="radio" name="TF4" value="False"> False
+<br>
+<br>
+-->
+{% for fact in facts %}
+<h2>{{ fact.statement }}</h2>
+<input type="radio" name="tf{{ fact.id }}" value="True">True
+<input type="radio" name="tf{{ fact.id }}" value="False">False
+{% endfor %}
+
+<input type="submit" name="submit" class="btn btn-default" value="Submit">
+</form>
+
+
 
 </body>
-</html>>
+</html>
