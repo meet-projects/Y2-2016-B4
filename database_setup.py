@@ -10,7 +10,7 @@ class Person(Base):
 	name = Column(String)  
 	gender = Column(String) 
 	nationality = Column(String) 
-	Base = declarative_base()
+
 class Fact(Base): 
 	__tablename__ = 'facts' 
 	id = Column(Integer, primary_key=True)

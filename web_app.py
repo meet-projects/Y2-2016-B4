@@ -6,7 +6,7 @@ app = Flask(__name__)
 ### Add your tables here!
 # For example:
 # from database_setup import Base, Potato, Monkey
-from database_setup import Base
+from database_setup import *
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -16,15 +16,23 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+
 #YOUR WEB APP CODE GOES HERE
 
-@app.route('/')
-def main():
-    return render_template('main_page.html')
 
-@app.route('/facts')
-def facts():
-    return render_template('facts.html')
+
+@app.route('/choose')
+def choose():
+	facts=session.query(Fact).all()
+	tribes = set()
+	for fact  in facts :
+		tribes.add(fact.tribe)
+	return render_template("choose.html" tribes= tribes)
+
+
+
+
+
 
 
 
