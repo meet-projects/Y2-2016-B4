@@ -87,6 +87,12 @@ def facts(tribe_name):
 			return redirect(url_for('leaderboard'))
 	else:
 		return redirect(url_for('login'))
+@app.route('/leaderboard', methods=['Get'])
+def  leaderboard():
+	for person in Person:
+		Person.add(person)
+	return render_template('leaderboard.html')
+	pass
 
 
 
