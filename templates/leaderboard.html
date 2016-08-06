@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/styles.css"> 
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <!-- jQuery library -->
@@ -14,11 +16,11 @@
 <body>
 
 
-
+<div class="table-condensed">
   <!-- Table -->
   <table class="table">
     leader board
- 
+
   <thead>   
       <tr>
           <th>Name</th>
@@ -30,7 +32,7 @@
   {% for person in people%}
       <tr>
       <td>{{person.name}}</td>
-      <td>{{person.tribe}}</td>
+      <td>{{person.nationality}}</td>
       <td>{{person.score}}</td>
       </tr> 
       {% endfor %} 

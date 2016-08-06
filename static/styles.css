@@ -1,14 +1,16 @@
-h1{font-size: ;
-  color: #fcd757}
+h1{font-size:200% ;
+  color: #6d3d14}
 body{
   /* Safari 4-5, Chrome 1-9 */
-    background: -webkit-gradient(radial, center center, 0, center center, 460, from(#eefc57), to(#df9a57));
+   /* background: -webkit-gradient(radial, center center, 0, center center, 460, from(#eefc57), to(#df9a57));
 
   /* Safari 5.1+, Chrome 10+ */
-    background: -webkit-radial-gradient(circle, #fc7a57, #2F2727);
+  background-image: url(images/wood.jpg);
+  background-size: 100% 100%;
+    background: -webkit-radial-gradient(circle, #a7cecb);
 
   /* Firefox 3.6+ */
-    background: -moz-radial-gradient(circle, #eefc57, #eefc57);
+    background: -moz-radial-gradient(circle, #90aa86, #eefc57);
 
   /* IE 10 */
     background: -ms-radial-gradient(circle, #eefc57, #eefc57);
@@ -44,7 +46,23 @@ button {
   box-shadow: none;
   border-radius: 0;
 }
+.left{
+  text-align: left;
+}
+.clr{
+  color: #434371;
+}
 
 body{
   font-size: 300%
+}
+tbody{
+  font-size: 300%
+}
+thead{
+  font-size: 250%
+}
+
+input{
+  font-size: 100%;
 }

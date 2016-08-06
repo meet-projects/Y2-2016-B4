@@ -21,8 +21,10 @@ class Fact(Base):
 class Answers(Base): 
 	__tablename__ = 'answers' 
 	id = Column(Integer, primary_key=True)
-	person_id = Column(Integer)
-	fact_id = Column(Integer)
+	person_id = Column(Integer, ForeignKey('person.id'))
+	person = relationship('Person')
+	fact_id = Column(Integer, ForeignKey('facts.id'))
+	fact = relationship('Fact')
 	answer = Column(String)
 	
 

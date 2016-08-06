@@ -89,9 +89,15 @@ def facts(tribe_name):
 		return redirect(url_for('login'))
 @app.route('/leaderboard', methods=['Get'])
 def  leaderboard():
-	for person in Person:
-		Person.add(person)
-	return render_template('leaderboard.html')
+	people = session.query(Person).all()
+	for person in people:
+		answers_for_person = session.query(Answers).filter_by(person_id=person.id)
+		score = 0
+		for answer in answers_for_person:
+			if answer.answer == answer.fact.correct_answer:
+				score += 1
+		person.score = score
+	return render_template('leaderboard.html', people = people)
 	pass
 
 
