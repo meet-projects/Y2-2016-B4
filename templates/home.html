@@ -21,10 +21,12 @@
 <br>
 <br>
 <section class="signUpform cf">
-<form name="signup" action="{{ url_for('signup') }}" method="post" accept-charset="utf-8">\
+<form name="signup" action="{{ url_for('signup') }}" method="post" accept-charset="utf-8" role="form">
   <ul>
-  	<li><label for="name" >Name</label>
-  	<input type="name" name="name" placeholder="Full Name" required></li>
+    <div class="form-group">
+    	<li><label for="name" >Name</label>
+    	<input type="name" name="name" placeholder="Full Name" class="form-control"></li>
+    </div>
 
   	<input type="radio" name="gender" value="male">Male
   	<input type="radio" name="gender" value="female">Female

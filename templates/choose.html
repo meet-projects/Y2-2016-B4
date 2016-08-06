@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<h1>CHOOSE YOUR TRIBE</h1>
+	<link rel="stylesheet" type="text/css" href="../static/styles.css"> 
+<h1>CHOOSE A QUIZ</h1>
+{% for tribe in tribes%}
+<a href="{{url_for('facts', tribe_name=tribe) }}" rel="stylesheet"/>{{ tribe }}</a>
+{%endfor%}
 	<title></title>
 </head>
 <body>
 
-{% for tribe in tribes%}
-<a href="{{url_for('facts', tribe_name=tribe) }}">{{ tribe }}</a><br>
-{%endfor%}
+
 
 </body>
 </html>
