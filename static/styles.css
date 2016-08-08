@@ -74,15 +74,20 @@ input{
 }
 
 
-.panel-transparent {
+/*.panel-transparent {
         background: none;
-    }
+    }*/
 
 
 
 .panel-transparent .panel-body{
-        background: rgba(0, 0, 0, 0.15);
+        th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+        tr:nth-child(even) {background-color: #f2f6f2}
     }
-.btn{color: blue}
-.log{color: #6d3d14}
+/*.btn{color: blue}*/
+/*.log{color: #6d3d14}*/
 }
