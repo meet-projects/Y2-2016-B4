@@ -47,6 +47,10 @@ fact38=Fact(tribe="Women",statement="men speak more than woman",correct_answer="
 fact39=Fact(tribe="Women",statement="in russia there are 9 million more women than men.",correct_answer="True")
 fact40=Fact(tribe="Women",statement="40% of births in the U.S come from unmarried women",correct_answer="True")
 
+
+session.query(Fact).delete()
+session.commit()
+
 session.add(fact6)
 session.add(fact7)
 session.add(fact8)
