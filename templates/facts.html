@@ -2,15 +2,13 @@
 <html>
 <head>
 <!-- Latest compiled and minified CSS --> 
-<link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
 <!-- jQuery library --> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
 
-<head> 
 <title>Bootstrap</title> 
 <meta charset="utf-8">  
 <!-- Making Bootstrap Responsive -- > 
@@ -22,6 +20,7 @@
 <!-- Latest compiled JavaScript --> 
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
 
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
 </head>
 
 <body>
@@ -113,12 +112,14 @@
 <br>
 <br>
 -->
-<div class="clr">
+<div class="clr panel panel-primary panel-transparent">
+<div class="panel-body">
 {% for fact in facts %}
 <h2>{{ fact.statement }}</h2>
 <input type="radio"  name="tf{{ fact.id }}" value="True">True
 <input type="radio" name="tf{{ fact.id }}" value="False">False
 {% endfor %}
+</div>
 </div>
 <br>
 
