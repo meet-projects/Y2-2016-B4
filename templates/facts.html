@@ -118,8 +118,8 @@
 <div class="panel-body">
 {% for fact in facts %}
 <h2>{{ fact.statement }}</h2>
-<input type="radio"  name="tf{{ fact.id }}" value="True">True
-<input type="radio" name="tf{{ fact.id }}" value="False">False
+<input type="radio"  name="tf{{ fact.id }}" value="True" class="radio">True
+<input type="radio" name="tf{{ fact.id }}" value="False" class="radio">False
 {% endfor %}
 </div>
 </div>
