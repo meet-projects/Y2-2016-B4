@@ -20,7 +20,7 @@
     <h1>TRIBE TRIVIA</h1>
 
 
-<div class="container">
+<div class="container log">
 <section class="loginform cf">
 
 <form name="login" action="{{ url_for('login') }}" method="post" accept-charset="utf-8" class="form-inline">
@@ -32,15 +32,15 @@
     </div>
 </form>
 </section>
-</div>
 <br>
 <br>
-<br>
-<br>
-<br>
+<p>Dont have an account SIGN UP!</p>
 <br>
 
-<div class="container left" >
+</div>
+
+<div class="container left panel panel-primary panel-transparent" >
+<div class="panel-body">
 <section class="signUpform cf">
 <form name="signup" action="{{ url_for('signup') }}" method="post" accept-charset="utf-8" role="form" class="form-horizontal">
     <div class="form-group">
@@ -59,12 +59,13 @@
   	<label for="name" >Nationality/Tribe</label>
   	<input type="name" name="nationality" placeholder="Nationality/Tribe" class="form-control" required>
     </div>
-  <div class="form-­group"> 
+  <div class="form-­group btn"> 
   <input type="submit" class="btn btn‐default" value="Sign Up">
   </div> 
   
 </form> 
 </section>
+</div>
 </div>
       
 
