@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<div class="background-image"></div>
+<div class="content">
 	<link rel="stylesheet" type="text/css" href="../static/styles.css"> 
 <h1>CHOOSE A QUIZ</h1>
 {% for tribe in tribes%}
 <a href="{{url_for('facts', tribe_name=tribe) }}" rel="stylesheet"/>{{ tribe }}</a>
 {%endfor%}
 	<title></title>
+</div>
 </head>
 <body>
 
