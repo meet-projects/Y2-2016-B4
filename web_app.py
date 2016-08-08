@@ -98,7 +98,23 @@ def  leaderboard():
 				score += 1
 		person.score = score
 	return render_template('leaderboard.html', people = people)
-	pass
+
+@app.route('/answers/<string:tribe_name>')
+def answers(tribe_name):
+	if 'name' in flask_session:
+		person = session.query(Person).filter_by(name=flask_session['name']).first()
+		
+        answers_for_person = session.query(Answers).filter_by(person_id=person.id).all()
+        return render_template('answers.html', answers=answers_for_person)
+
+
+
+		#
+
+	else:
+		return redirect(url_for('login'))
+
+
 
 
 
