@@ -84,14 +84,14 @@ def facts(tribe_name):
 				session.add(new_answer_row)
 			session.commit()
 
-			return redirect(url_for('leaderboard'))
+			return redirect(url_for('answers', tribe_name = tribe_name ))
 	else:
 		return redirect(url_for('login'))
 @app.route('/leaderboard', methods=['Get'])
 def  leaderboard():
 	people = session.query(Person).all()
 	for person in people:
-		answers_for_person = session.query(Answers).filter_by(person_id=person.id)
+		answers_for_person =  session.query(Answers).filter_by(person_id=person.id)
 		score = 0
 		for answer in answers_for_person:
 			if answer.answer == answer.fact.correct_answer:
@@ -101,18 +101,15 @@ def  leaderboard():
 
 @app.route('/answers/<string:tribe_name>')
 def answers(tribe_name):
-	if 'name' in flask_session:
-		person = session.query(Person).filter_by(name=flask_session['name']).first()
-		
+    if 'name' in flask_session:
+        person = session.query(Person).filter_by(name=flask_session['name']).first()
+        
         answers_for_person = session.query(Answers).filter_by(person_id=person.id).all()
-        return render_template('answers.html', answers=answers_for_person)
+        answers=[answer for answer in answers_for_person if answer.fact.tribe==tribe_name]    
 
-
-
-		#
-
-	else:
-		return redirect(url_for('login'))
+        return render_template('answers.html', answers=answers)
+    else:
+        return redirect(url_for('login'))
 
 
 

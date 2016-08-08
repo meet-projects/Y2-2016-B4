@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>your answers</title>
+</head>
+<body>
+
+<div class="clr">
+	{% for answer in answers %}
+		{{answer.fact.statement}}
+		<br>
+		{% if answer.answer == answer.fact.correct_answer %}	
+			correct
+		{% else %}
+			incorrect
+		{% endif %}
+		<br>
+		<br>
+	{% endfor %}
+</div>
+
+<a href="{{url_for('leaderboard')}}">go to leaderboard</a>
+
+</body>
+</html>
